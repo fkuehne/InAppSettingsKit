@@ -16,7 +16,9 @@
 
 #import "IASKSpecifier.h"
 #import "IASKSettingsReader.h"
+#if TARGET_OS_IOS
 #import "IASKAppSettingsWebViewController.h"
+#endif
 
 @interface IASKSpecifier ()
 
@@ -168,7 +170,9 @@
 }
 
 - (Class)viewControllerClass {
+#if TARGET_OS_IOS
     [IASKAppSettingsWebViewController class]; // make sure this is linked into the binary/library
+#endif
     return [self classFromString:([_specifierDict objectForKey:kIASKViewControllerClass])];
 }
 
